@@ -4,44 +4,56 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour {
 
-	public float forwardVelocity = 12;
+    public float forwardVelocity = 12;
 
-	Quaternion targetRotation;
-	Rigidbody body;
-	float forwardInput, sideInput;
+    Quaternion targetRotation;
+    Rigidbody body;
+    float forwardInput, sideInput, horizontalRotation, verticalRotation;
 
-	public Quaternion TargetRotation {
-		get { return targetRotation; }
+    public Quaternion TargetRotation {
+        get { return targetRotation; }
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        targetRotation = transform.rotation;
+        body = GetComponent<Rigidbody>();
+
+        forwardInput = sideInput = 0;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        GetInput();
+        Run();
+    }
+
+    void GetInput()
+    {
+        forwardInput = Input.GetAxis("Vertical");
+        sideInput = Input.GetAxis("Horizontal");
+
+        horizontalRotation = Input.GetAxis("TurnHorizontal");
+        verticalRotation = Input.GetAxis("TurnVertical");
+    }
+
+    void Run()
+    {
+        body.velocity = new Vector3(0,0,1) * (forwardInput * forwardVelocity) + new Vector3(1,0) * (sideInput * forwardVelocity);
+
+        if (horizontalRotation > .19 || verticalRotation > .19 || horizontalRotation < -.19 || verticalRotation < -.19)
+        {
+            Quaternion rotation = Quaternion.LookRotation(new Vector3(horizontalRotation, 0, verticalRotation));
+            transform.rotation = rotation;
+        }
+        
+
+        LookAtMouse();
 	}
 
-	// Use this for initialization
-	void Start () 
-	{
-		targetRotation = transform.rotation;
-		body = GetComponent<Rigidbody>();
-
-		forwardInput = sideInput = 0;
-	}
-
-	// Update is called once per frame
-	void Update () 
-	{
-		GetInput();
-		Run();
-	}
-
-	void GetInput () 
-	{
-		forwardInput = Input.GetAxis("Vertical");
-		sideInput = Input.GetAxis("Horizontal");
-	}
-
-	void Run()
-	{
-		body.velocity = transform.forward * (forwardInput * forwardVelocity) + transform.right * (sideInput * forwardVelocity);
-	}
-
-	void Turn()
-	{
-	}
+    void LookAtMouse()
+    {
+    }
 }
