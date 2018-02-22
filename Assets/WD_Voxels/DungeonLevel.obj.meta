@@ -1,18 +1,18 @@
 fileFormatVersion: 2
-guid: 9621d0ec0af729e47bd7c44aa2ca6b95
-timeCreated: 1517582699
+guid: c975be55d7c8841f0a51506ff5c4df6f
+timeCreated: 1519099441
 licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
-    100000: wizardModel
+    100000: DungeonLevel
     100002: //RootNode
-    400000: wizardModel
+    400000: DungeonLevel
     400002: //RootNode
-    2100000: palette
-    2300000: wizardModel
-    3300000: wizardModel
-    4300000: wizardModel
+    2100000: DungeonLevelMat
+    2300000: DungeonLevel
+    3300000: DungeonLevel
+    4300000: DungeonLevel
   externalObjects: {}
   materials:
     importMaterials: 1
