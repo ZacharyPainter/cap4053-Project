@@ -9,6 +9,7 @@ public class CharacterController : MonoBehaviour {
     Quaternion targetRotation;
     Rigidbody body;
     float forwardInput, sideInput, horizontalRotation, verticalRotation;
+    bool fireInput;
 
     public Quaternion TargetRotation {
         get { return targetRotation; }
@@ -34,6 +35,8 @@ public class CharacterController : MonoBehaviour {
     {
         forwardInput = Input.GetAxis("Vertical");
         sideInput = Input.GetAxis("Horizontal");
+        fireInput = Input.GetButton("Fire1");
+
 
         horizontalRotation = Input.GetAxis("TurnHorizontal");
         verticalRotation = Input.GetAxis("TurnVertical");
@@ -48,12 +51,8 @@ public class CharacterController : MonoBehaviour {
             Quaternion rotation = Quaternion.LookRotation(new Vector3(horizontalRotation, 0, verticalRotation));
             transform.rotation = rotation;
         }
-        
 
-        LookAtMouse();
+        if (fireInput)
+            GetComponent<CharacterWeapon>().handleFire();
 	}
-
-    void LookAtMouse()
-    {
-    }
 }
