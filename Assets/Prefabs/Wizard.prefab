@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114259135048039324}
   - component: {fileID: 114990390273597292}
   - component: {fileID: 114681131617156188}
+  - component: {fileID: 114562182614857534}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -55,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1949042139606646}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -9.150001, y: 4.8600006, z: -2.9449987}
+  m_LocalPosition: {x: -2.006, y: 4.511, z: 11.9}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 4619010891696814}
@@ -142,7 +143,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed09e2cd7eb8cc4c8d734a51a404c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardVelocity: 12
+  forwardVelocity: 20
+  playerNumber: 1
+--- !u!114 &114562182614857534
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1515596648487482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c57060102fa56bb4d824d6424b650dc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114681131617156188
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,7 +179,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e30d7230bcf99b49941cde41d9c13fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 1
+  fireRate: 5
+  projectileSpeed: 30
   currentWeapon: Fireball
   Fireball: {fileID: 1733135402621418, guid: 8069f1c3a4f649a4abf11a5553adf6e0, type: 2}
 --- !u!136 &136301674361089214

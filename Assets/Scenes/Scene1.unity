@@ -306,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &385626950
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -729,6 +729,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1212372382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1212372377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3ca6d263fdbe0e4fa2ae19271cb8708, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropTable:
+  - {fileID: 1392552312990084, guid: 281a23844673fd4429387d8427225828, type: 2}
+--- !u!114 &1212372383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1212372377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad78f076ecce1a24d9696e203aea0a61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 3
 --- !u!1 &1686807715
 GameObject:
   m_ObjectHideFlags: 0
@@ -811,7 +836,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &1691479014
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -895,7 +920,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2590a8dbc87ad481eacf70377bf28083, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -56.45
+      value: -55.09
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 2590a8dbc87ad481eacf70377bf28083, type: 3}
       propertyPath: m_LocalRotation.x
