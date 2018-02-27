@@ -9,8 +9,8 @@ public class LevelManager : MonoBehaviour {
 
     private Transform PlayerHolder;
 
-    private Vector3 playerSpawnPosition = new Vector3(-8,5,0);
-    private Vector3 enemySpawnPosition = new Vector3(8, 8, 0);
+    private Vector3 playerSpawnPosition = new Vector3(-8,-2,0);
+    private Vector3 enemySpawnPosition = new Vector3(8, 1, 0);
 
     private Quaternion playerSpawnRotation = Quaternion.LookRotation(new Vector3(1,0,0));
     private Quaternion enemySpawnRotation = Quaternion.LookRotation(new Vector3(-1, 0, 0));

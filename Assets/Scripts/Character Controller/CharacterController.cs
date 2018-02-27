@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using XboxCtrlrInput;
 
 public class CharacterController : MonoBehaviour {
 
-    public float forwardVelocity = 12;
+    public float forwardVelocity = 50.0f;
 
     Quaternion targetRotation;
     Rigidbody body;
-    float forwardInput, sideInput, horizontalRotation, verticalRotation;
-    bool fireInput;
+    float forwardInput, sideInput, horizontalRotation, verticalRotation, fireInput;
+
+	public XboxController playerNumber = XboxController.First;
 
     public Quaternion TargetRotation {
         get { return targetRotation; }
@@ -25,7 +27,7 @@ public class CharacterController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         GetInput();
         Run();
@@ -33,13 +35,12 @@ public class CharacterController : MonoBehaviour {
 
     void GetInput()
     {
-        forwardInput = Input.GetAxis("Vertical");
-        sideInput = Input.GetAxis("Horizontal");
-        fireInput = Input.GetButton("Fire1");
+		forwardInput = XCI.GetAxis(XboxAxis.LeftStickY, playerNumber);
+		sideInput = XCI.GetAxis (XboxAxis.LeftStickX, playerNumber);
+		fireInput = XCI.GetAxis (XboxAxis.RightTrigger, playerNumber);
 
-
-        horizontalRotation = Input.GetAxis("TurnHorizontal");
-        verticalRotation = Input.GetAxis("TurnVertical");
+		horizontalRotation = XCI.GetAxis (XboxAxis.RightStickX, playerNumber);
+		verticalRotation = XCI.GetAxis (XboxAxis.RightStickY, playerNumber);
     }
 
     void Run()
@@ -52,7 +53,8 @@ public class CharacterController : MonoBehaviour {
             transform.rotation = rotation;
         }
 
-        if (fireInput)
+		if (fireInput != 0)
             GetComponent<CharacterWeapon>().handleFire();
 	}
+
 }

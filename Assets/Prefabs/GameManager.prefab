@@ -55,7 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerWizard: {fileID: 1515596648487482, guid: f8abf1d4f472edc44ac8ed74220c0b68,
     type: 2}
-  EnemyWizard: {fileID: 1602615539571702, guid: a27e7eb84ce458b4a91b4b362239c8b1,
+  EnemyWizard: {fileID: 1272053303801774, guid: 780dcb8ec3bf743ab99de9dc573ee5cf,
     type: 2}
 --- !u!114 &114382365817250668
 MonoBehaviour:
