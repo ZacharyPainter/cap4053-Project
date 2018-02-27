@@ -5,6 +5,7 @@ using UnityEngine;
 public class CharacterWeapon : MonoBehaviour {
 
     public float fireRate = 1;
+    public float projectileSpeed = 16;
     public string currentWeapon = "Fireball";
     private float timeToFire = 0;
     public GameObject Fireball;
@@ -23,7 +24,7 @@ public class CharacterWeapon : MonoBehaviour {
             {
                 case "Fireball":
                     var bullet = (GameObject)Instantiate(Fireball, firePoint.position, firePoint.rotation);
-                    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * 6;
+                    bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * projectileSpeed;
                     break;
                 default:
                     break;

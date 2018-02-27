@@ -14,6 +14,12 @@ public class CharacterHealth : MonoBehaviour
         if (health <= 0)
         {
             health = 0;
+
+            if (gameObject.GetComponent<MobItem>() != null)
+            {
+                gameObject.GetComponent<MobItem>().dropItem(gameObject.transform.position);
+            }
+
             Destroy(gameObject);
         }
     }

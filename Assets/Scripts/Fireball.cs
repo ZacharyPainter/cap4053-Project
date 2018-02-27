@@ -8,7 +8,6 @@ public class Fireball : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if (other.gameObject.GetComponent<CharacterHealth>() != null)
         {
             //Deal damage to target
