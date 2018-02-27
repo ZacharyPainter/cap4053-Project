@@ -1,92 +1,47 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyController : MonoBehaviour {
 
-	public float forwardVelocity = 12, targetDistance, lookDistance, attackDistance, damping = 10;
-	public Transform target;
+	public GameObject player;
+	private NavMeshAgent nav;
+	private Vector3 prevNavPos;
 
-	Quaternion targetRotation;
-	Rigidbody body;
-	float forwardInput, sideInput, horizontalRotation, verticalRotation;
-	private GameObject player;
-	bool fireInput;
-	enum State {Wandering, Pursuing, Seeking};
-	State state;
-	Renderer myRender;
-
-	public Quaternion TargetRotation {
-		get { return targetRotation; }
-	}
+	private string state = "idle";
+	private bool alive = true;
 
 	// Use this for initialization
 	void Start()
 	{
-		targetRotation = transform.rotation;
-		body = GetComponent<Rigidbody>();
-		myRender = GetComponent<Renderer> ();
-		player = GameObject.Find ("Wizard");
-		state = State.Wandering;
+		nav = GetComponent<NavMeshAgent> ();
 
-		forwardInput = sideInput = 0;
 	}
 
 	// Update is called once per frame
-	void FixedUpdate()
+	void Update()
 	{
-		switch (state)
+		if (alive)
 		{
-		/*case State.Pursuing:
-			Pursue ();
-			break;*/
-		case State.Wandering:
-			Wander ();
-			break;
+			if (state == "idle")
+			{
+				Vector3 randomPos = Random.insideUnitSphere * 30f;
+				NavMeshHit navHit;
+				NavMesh.SamplePosition (transform.position + randomPos, out navHit, 30f, NavMesh.AllAreas);
+				nav.SetDestination (navHit.position);
+				prevNavPos = navHit.position;
+				state = "walk";
+			}
+
+			if (state == "walk")
+			{
+				if (nav.remainingDistance <= nav.stoppingDistance && !nav.pathPending)
+				{
+					state = "idle";
+				}
+			}	
 		}
+		//nav.SetDestination (player.transform.position);
 	}
-
-	void Wander()
-	{
-		target.position = Random.insideUnitCircle * 5;
-
-		lookAtTarget ();
-		move ();
-	}
-
-	void Pursue()
-	{
-		//set vectors for pursuing
-		Vector3 start = transform.position;
-		Vector3 direction = player.transform.position - transform.position;
-
-		forwardInput = Input.GetAxis("Vertical");
-		sideInput = Input.GetAxis("Horizontal");
-		fireInput = Input.GetButton("Fire1");
-
-
-		horizontalRotation = Input.GetAxis("TurnHorizontal");
-		verticalRotation = Input.GetAxis("TurnVertical");
-
-		RaycastHit playerInSight;
-		Physics.Linecast (start, direction, out playerInSight);
-
-		if (playerInSight.collider.CompareTag ("Player")) {
-			fireInput = true;
-		} else {
-			state = State.Wandering;
-		}
-	}
-
-	void move()
-	{
-		body.AddForce (transform.forward * forwardVelocity);
-	}
-
-	void lookAtTarget()
-	{
-		Quaternion rotation = Quaternion.LookRotation (target.position - transform.position);
-		transform.rotation = Quaternion.Slerp (transform.rotation, rotation, Time.deltaTime * damping);
-	}
-
 }

@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 136984542584199572}
   - component: {fileID: 114178368732967122}
   - component: {fileID: 114433680054962350}
+  - component: {fileID: 195271422308949998}
   m_Layer: 0
   m_Name: RedWizard
   m_TagString: Untagged
@@ -119,17 +120,12 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1272053303801774}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b7299a116950c464188f2e07f8264b47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardVelocity: 12
-  targetDistance: 0
-  lookDistance: 0
-  attackDistance: 0
-  damping: 0
-  target: {fileID: 0}
+  player: {fileID: 1515596648487482, guid: f8abf1d4f472edc44ac8ed74220c0b68, type: 2}
 --- !u!136 &136984542584199572
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -143,3 +139,24 @@ CapsuleCollider:
   m_Height: 19.016033
   m_Direction: 1
   m_Center: {x: 0.4576694, y: 9.491979, z: 0.5000002}
+--- !u!195 &195271422308949998
+NavMeshAgent:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1272053303801774}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 5.45
+  m_Speed: 12
+  m_Acceleration: 12
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 17.47
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
