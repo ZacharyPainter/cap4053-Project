@@ -53,7 +53,7 @@ public class CharacterController : MonoBehaviour {
             transform.rotation = rotation;
         }
 
-		if (fireInput != 0)
+		if (fireInput > 0)
             GetComponent<CharacterWeapon>().handleFire();
 	}
 

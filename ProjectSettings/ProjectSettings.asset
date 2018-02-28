@@ -641,9 +641,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: 27394a12-d011-479b-986a-cee473d0bc76
+  cloudProjectId: 1ce191f4-9fb7-45af-865d-fbc3c0d1937c
   projectName: WizardDuels
-  organizationId: zacharypainter5
+  organizationId: jacobspigle
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
